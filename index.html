@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nirvaanix AI Lead Finder</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="hero" aria-labelledby="page-title">
+        <div>
+          <p class="eyebrow">Nirvaanix growth console</p>
+          <h1 id="page-title">AI Lead Finder</h1>
+          <p class="hero-copy">
+            Discover, score, and prioritize accounts that are likely to need AI automation,
+            data intelligence, and custom software from Nirvaanix.
+          </p>
+        </div>
+        <div class="hero-card" aria-label="Pipeline summary">
+          <span class="metric-label">Qualified pipeline</span>
+          <strong id="pipelineValue">$0</strong>
+          <span id="pipelineCount">0 leads ready</span>
+        </div>
+      </section>
+
+      <section class="controls" aria-labelledby="finder-title">
+        <div>
+          <p class="eyebrow">Search profile</p>
+          <h2 id="finder-title">Find best-fit AI buyers</h2>
+        </div>
+        <form id="leadForm" class="lead-form">
+          <label>
+            Industry
+            <select id="industry">
+              <option value="all">All industries</option>
+              <option value="Healthcare">Healthcare</option>
+              <option value="Financial Services">Financial Services</option>
+              <option value="Manufacturing">Manufacturing</option>
+              <option value="Retail">Retail</option>
+              <option value="Logistics">Logistics</option>
+              <option value="Education">Education</option>
+            </select>
+          </label>
+          <label>
+            Company size
+            <select id="companySize">
+              <option value="all">Any size</option>
+              <option value="small">50-250 employees</option>
+              <option value="mid">251-1,000 employees</option>
+              <option value="enterprise">1,001+ employees</option>
+            </select>
+          </label>
+          <label>
+            Minimum score
+            <input id="scoreThreshold" type="range" min="40" max="95" step="5" value="70" />
+            <span id="scoreLabel">70+</span>
+          </label>
+          <label>
+            Region keyword
+            <input id="region" type="search" placeholder="e.g. United States, Texas, Remote" />
+          </label>
+          <button type="submit">Refresh leads</button>
+        </form>
+      </section>
+
+      <section class="insights-grid" aria-label="Lead insights">
+        <article>
+          <span>Avg. intent</span>
+          <strong id="avgIntent">0%</strong>
+        </article>
+        <article>
+          <span>Top industry</span>
+          <strong id="topIndustry">—</strong>
+        </article>
+        <article>
+          <span>Fastest next step</span>
+          <strong id="nextStep">—</strong>
+        </article>
+      </section>
+
+      <section class="results" aria-labelledby="results-title">
+        <div class="section-header">
+          <div>
+            <p class="eyebrow">Ranked accounts</p>
+            <h2 id="results-title">Recommended leads</h2>
+          </div>
+          <button id="exportCsv" class="secondary-button" type="button">Export CSV</button>
+        </div>
+        <div id="leadList" class="lead-list" aria-live="polite"></div>
+      </section>
+    </main>
+
+    <template id="leadCardTemplate">
+      <article class="lead-card">
+        <div class="lead-card__header">
+          <div>
+            <h3></h3>
+            <p class="lead-meta"></p>
+          </div>
+          <span class="score-pill"></span>
+        </div>
+        <p class="lead-problem"></p>
+        <ul class="signals"></ul>
+        <div class="lead-card__footer">
+          <span class="value"></span>
+          <button class="copy-button" type="button">Copy outreach</button>
+        </div>
+      </article>
+    </template>
+
+    <script src="script.js"></script>
+  </body>
+</html>
